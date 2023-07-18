@@ -12,8 +12,8 @@ function sendmail($subject,$body,$email,$name,$html=false) {
     $phpmailer->SMTPAuth = true;
     $phpmailer->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $phpmailer->Port = 465;
-    $phpmailer->Username = 'darias8264@gmail.com';
-    $phpmailer->Password = 'onisewmqwyifoklc';
+    $phpmailer->Username = '';
+    $phpmailer->Password = '';
     //credentials
     $phpmailer->setFrom('johncena@example.com', 'Mailer');
     $phpmailer->addAddress($email, $name);

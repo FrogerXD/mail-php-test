@@ -71,7 +71,7 @@ textarea {
   display: block;
   width: 80%;
   max-width: 400px;
-  height: 150px;
+  height: 100px;
   padding: 5px;
   resize: vertical;
   margin: 0 auto;
@@ -89,6 +89,7 @@ button {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 }
 
 /* Estilos de la sección de contacto */

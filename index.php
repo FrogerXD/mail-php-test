@@ -1,3 +1,26 @@
+<?php
+require "mail.php";
+function vali($name,$email,$subject,$message,$form){
+    return  !empty($name) && !empty($email) && !empty($subject) && !empty($message);
+}
+$status="";
+if (isset($_POST["form"])) {
+    if (vali(...$_POST)){
+        $name=$_POST["name"];
+        $email=$_POST["email"];
+        $subject=$_POST["subject"];
+        $message=$_POST["message"];
+        $body="$name <$email> te envia el mensaje : <br><br> $message";
+        sendmail($subject,$body,$email,$name,TRUE);
+        $status="success";
+    }else{
+        $status="danger";
+    };
+}else{
+};
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,14 +33,17 @@
 </head>
 
 <body>
-    <div class="alert danger">
-        <span>Surgió un problema</span>
-    </div>
-    <div class="alert success">
-        <span>Email enviado con exito</span>
-    </div>
-
-    <form action="./">
+    <?php if($status=="danger"): ?>
+        <div class="alert danger">
+            <span>Surgió un problema</span>
+       </div>
+    <?php endif;?>
+    <?php if($status=="success"): ?>
+       <div class="alert success">
+           <span>Email enviado con exito</span>
+      </div>
+    <?php endif;?>
+    <form action="./" method="post">
         <h1>¡Envia un correo!</h1>
         <div class="div_input">
             <label for="name">Nombre:</label>
@@ -36,7 +62,7 @@
             <textarea name="message" id="message" placeholder="Ingresa tu mensaje"></textarea>
         </div>
         <div class="div_button">
-            <button type="submit">Enviar</button>
+            <button name="form" type="submit">Enviar</button>
         </div>
         <div class ="div_con">
             <span>Contactame</span>
